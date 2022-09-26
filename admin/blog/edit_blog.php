@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <?php
+session_start();
 include('controller.php');
 if(!isset($_SESSION['login']['status']))
 {

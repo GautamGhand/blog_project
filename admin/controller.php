@@ -1,9 +1,11 @@
 <?php
 include('../database/database.php');
 include('../validation/validation.php');
+include('../commontraits/controller_common.php');
 session_start();
 class Admin extends Database
 {   
+    use common;
     public $data;
     public $obj;
     public $valid;

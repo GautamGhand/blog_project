@@ -16,26 +16,38 @@ trait common
                 $name=$pst['UserName'];
                 $password=$pst['UserPassword'];
                 $this->obj->exec("update $table_name set email='$name',password='$password' where id='$id' ");
-                header('location:view_users.php');              
+                header('location:../user/view_users.php');              
             }
             else
             {
                 $title=$pst['title'];
                 $description=$pst['description'];
-                $this->obj->exec("update $table_name set title='$title',password='$description' where id='$id' ");
-                header('location:view_users.php');  
+                $this->obj->exec("update $table_name set title='$title',description='$description' where id='$id' ");
+                header('location:../admin/blog/view_blogs.php');  
             }
     }
     function delete($table_name,$id)
     {
         $data=$this->obj->query("select *from $table_name where id='$id'");
         $s=$data->fetch();
-            if($s)
+            if($s && $table_name=='user')
             {
                 $this->obj->exec("delete from $table_name where id='$id'");
                 $this->obj->exec("alter table $table_name AUTO_INCREMENT=1");
-                header('location:view_users.php');
+                header('location:../user/view_users.php');
             }    
+            elseif($table_name=='blog')
+            {
+                $this->obj->exec("delete from $table_name where id='$id'");
+                $this->obj->exec("alter table $table_name AUTO_INCREMENT=1");
+                header('location:../admin/blog/view_blogs.php');  
+            }
+            else
+            {
+                $this->obj->exec("delete from $table_name where id='$id'");
+                $this->obj->exec("alter table $table_name AUTO_INCREMENT=1");
+                header('location:../admin/view_subadmin.php');
+            }
     }
 
 }

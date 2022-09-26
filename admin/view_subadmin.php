@@ -7,11 +7,11 @@ include('controller.php');
 // }
 $obj=new Admin();
 $d=$obj->view();
-if($d)
-{
     echo "<table cellspacing=0>";
     echo "<th>EMAIL</th>";
     echo "<th>PASSWORD</th>";
+if($d)
+{
     if($_SESSION['login']['role']==1)
     {
         echo "<th>DELETE</th>";
@@ -35,7 +35,7 @@ if($d)
             echo "<td>".$row['email']."</td>";
             echo "<td>".$row['password']."</td>";
         }
-    }
-    echo "<a href=\"main_page.php\" class=\"active\">BACK</a>"; 
+    } 
 }
+echo "<a href=\"main_page.php\" class=\"active\">BACK</a>";
 ?>

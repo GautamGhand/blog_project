@@ -2,5 +2,5 @@
 include('controller.php'); 
 $id=$_GET['id'];
 $obj=new Admin();
-$obj->delete($id);
+$obj->delete('admin',$id);
 ?>
