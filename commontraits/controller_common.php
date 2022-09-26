@@ -40,7 +40,7 @@ trait common
             {
                 $this->obj->exec("delete from $table_name where id='$id'");
                 $this->obj->exec("alter table $table_name AUTO_INCREMENT=1");
-                header('location:../admin/blog/view_blogs.php');  
+                header('location:view_blogs.php');  
             }
             else
             {
