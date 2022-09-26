@@ -1,6 +1,7 @@
 <?php
-include('../class.php');
-if (isset($_POST['signup'])) {
+include('controller..php');
+if (isset($_POST['signup']))
+{
     $obj = new User($_POST);
     $obj->signup();
 }

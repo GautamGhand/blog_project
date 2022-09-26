@@ -1,6 +1,7 @@
 <?php
-include('../class.php');
-if (isset($_POST['submit'])) {
+include('controller.php');
+if (isset($_POST['submit']))
+{
     $obj = new User($_POST);
     $obj->login();
 }

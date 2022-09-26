@@ -1,19 +1,23 @@
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
 <?php
-include('../class.php');
+session_start();
+include('controller.php');
 if(!isset($_SESSION['login']['status']))
 {
-    header('location:admin_login.php');
+    header('location:../admin_login.php');
 }
 $id = $_GET['id'];
 $obj = new PDO('mysql:dbname=blog_project;host=localhost;', 'root', '');
-foreach ($obj->query("select *from user") as $row) {
-    if ($id == $row['id']) {
+$data=$obj->query("select *from user where id='$id' ");
+$row=$data->fetch();
+if($row)
+{
         $val = $row;
-    }
 }
-if (isset($_POST['Edit_User'])) {
-    $ad = new Admin($_POST);
-    $ad->edit($id);
+if(isset($_POST['Edit_User'])) 
+{
+    $obj=new User();
+    $obj->edit('user',$id,$_POST);
     header('location:view_users.php');
 }
 ?>

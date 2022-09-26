@@ -1,6 +1,6 @@
 <?php
-include('../class.php'); 
+include('controller.php'); 
 $id=$_GET['id'];
-$obj=new Subadmin();
+$obj=new Admin();
 $obj->delete($id);
 ?>

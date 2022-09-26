@@ -1,15 +1,22 @@
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
 <?php
-include('../class.php');
+include('controller.php');
+if(!isset($_SESSION['login']['status']))
+{
+    header('location:../admin_login.php');
+}
 $id = $_GET['id'];
 $obj = new PDO('mysql:dbname=blog_project;host=localhost;', 'root', '');
-foreach ($obj->query("select *from blog") as $row) {
-    if ($id == $row['id']) {
-        $val = $row;
-    }
+$data=$obj->query("select *from blog");
+$row=$data->fetch();
+if($row)
+{
+    $val = $row;
 }
-if (isset($_POST['Edit_Blog'])) {
+if (isset($_POST['Edit_Blog'])) 
+{
     $ad = new Blog($_POST);
-    $ad->edit($id);
+    $ad->edit('blog',$id,$_POST);
     header('location:view_blogs.php');
 }
 ?>

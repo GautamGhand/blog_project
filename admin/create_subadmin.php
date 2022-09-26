@@ -1,11 +1,12 @@
 <?php
-include('../class.php');
-if(!isset($_SESSION['login']['status']))
+include('controller.php');
+// if(!isset($_SESSION['login']['status']))
+// {
+//     header('location:admin_login.php');
+// }
+if(isset($_POST['Create_subadmin']))
 {
-    header('location:admin_login.php');
-}
-if (isset($_POST['Create_subadmin'])) {
-    $obj = new Subadmin($_POST);
+    $obj = new Admin($_POST);
     $obj->create();
 }
 ?>
@@ -21,7 +22,7 @@ if (isset($_POST['Create_subadmin'])) {
         <section class="frm">
             <form action="create_subadmin.php" method="POST">
                 <label class="txt">EMAIL</label>
-                <input type="text" name="SadminEmail" class="inpt">
+                <input type="text" name="admin_email" class="inpt">
                 <div class="error">
                     <?php
                     if(!empty($_SESSION['error']['email']))
@@ -31,7 +32,7 @@ if (isset($_POST['Create_subadmin'])) {
                     ?>
                 </div>
                 <label class="txt">PASSWORD</label>
-                <input type="password" name="SadminPassword" class="inpt">
+                <input type="password" name="admin_password" class="inpt">
                 <div class="error">
                     <?php
                     if(!empty($_SESSION['error']['password']))

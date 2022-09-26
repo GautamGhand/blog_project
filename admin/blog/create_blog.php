@@ -1,8 +1,9 @@
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
 <?php 
-include('../class.php');
+include('controller.php');
 if(!isset($_SESSION['login']['status']))
 {
-    header('location:admin_login.php');
+    header('location:../admin_login.php');
 }
 if(isset($_POST['submit']))
 {
@@ -45,6 +46,6 @@ if(isset($_POST['submit']))
                 </form>
             </section>
         </section>
-        <a href="main_page.php" class="link">BACK</a>
+        <a href="../main_page.php" class="link">BACK</a>
     </body>
 </html>

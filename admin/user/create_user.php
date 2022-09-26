@@ -1,11 +1,11 @@
 <?php
-include('../class.php');
+include('controller.php');
 if(!isset($_SESSION['login']['status']))
 {
-    header('location:admin_login.php');
+    header('location:../admin_login.php');
 }
 if (isset($_POST['Create_User'])) {
-    $obj = new Admin($_POST);
+    $obj = new User($_POST);
     $obj->create();
 }
 ?>
@@ -13,7 +13,7 @@ if (isset($_POST['Create_User'])) {
 
 <head>
     <title>CREATE USER</title>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
 </head>
 
 <body>
@@ -69,5 +69,5 @@ if (isset($_POST['Create_User'])) {
 
 </html>
 <?php
-echo "<a href=\"main_page.php\" class=\"active\">BACK</a>"; 
+echo "<a href=\"../main_page.php\" class=\"active\">BACK</a>"; 
 ?>
