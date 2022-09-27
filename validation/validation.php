@@ -3,7 +3,6 @@
 class Validation
 {
     public $error=[];
-
         function validateName($pst)
         {
             foreach($pst as $k=>$v)
@@ -26,10 +25,10 @@ class Validation
             }
             else
             {
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-            {
-                   $this->error['email']="please enter valid email";
-            }
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+                {
+                    $this->error['email']="please enter valid email";
+                }
             }
             if(empty($password))
             {
@@ -47,13 +46,11 @@ class Validation
         }
         function validateEmailExists($email,$check)
         {
-            foreach($check->query("select *from user") as $row)
+            $data=$check->query("select *from user where email='$email' ");
+            $d=$data->fetch();
+            if($d)
             {
-            if($email==$row['email'])
-            {
-                $this->error['email']="Email Already Exists";
-                break;
-            }                
+                $this->error['email']="Email Already Exists";         
             }
             return $this->error;
         }

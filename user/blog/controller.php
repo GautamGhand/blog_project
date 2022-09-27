@@ -21,7 +21,7 @@ class Blog extends Validation
     {
         $v=$this->obj->query("select *from blog where id='$id'");
         $x=$v->fetch();
-        if($x==false)
+        if(!$x)
         {
             header('location:blogs_page.php');
         }
