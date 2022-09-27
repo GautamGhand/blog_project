@@ -3,12 +3,13 @@
 include('../../database/database.php');
 include('../../validation/validation.php');
 session_start();
-class Blog extends Database
+class Blog extends Validation
 {
     public $obj;
     function __construct()
     {
-        $this->obj=$this->connect();
+        $db=new Database();
+        $this->obj=$db->connect();
     }
     function view()
     {

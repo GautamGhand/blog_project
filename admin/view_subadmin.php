@@ -1,10 +1,10 @@
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 <?php 
 include('controller.php');
-// if(!isset($_SESSION['login']['status']))
-// {
-//     header('location:admin_login.php');
-// }
+if(!isset($_SESSION['login']['status']))
+{
+    header('location:admin_login.php');
+}
 $obj=new Admin();
 $d=$obj->view();
     echo "<table cellspacing=0>";

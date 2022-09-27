@@ -1,9 +1,9 @@
 <?php
 include('controller.php');
-// if(!isset($_SESSION['login']['status']))
-// {
-//     header('location:admin_login.php');
-// }
+if(!isset($_SESSION['login']['status']))
+{
+    header('location:admin_login.php');
+}
 if(isset($_POST['Create_subadmin']))
 {
     $obj = new Admin($_POST);

@@ -2,21 +2,20 @@
 include("../../database/database.php");
 include('../../validation/validation.php');
 include('../../commontraits/controller_common.php');
-class Blog extends Database
+class Blog extends Validation
 {
     use common;
     public $data;
     public $obj;
-    public $valid;
     function __construct($data=null)
     {
         $this->data=$data;
-        $this->obj=$this->connect();
-        $this->valid=new Validation();
+        $db=new Database();
+        $this->obj=$db->connect();
     }
     function create()
     {
-        $_SESSION['error']=$this->valid->validateBlog($this->data);
+        $_SESSION['error']=$this->validateBlog($this->data);
         if(empty($_SESSION['error']))
         {
             $title=$this->data['title'];

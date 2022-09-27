@@ -2,22 +2,21 @@
 include('../database/database.php');
 include('../validation/validation.php');
 session_start();
-class User extends Database
+class User extends Validation
 {
     public $data;
     public $obj;
-    public $valid;
     function __construct($p=null)
     {
         $this->data=$p;
-        $this->obj=parent::connect();
-        $this->valid=new Validation();
+        $db=new Database();
+        $this->obj=$db->connect();
     }
     function signup()
     {
-        $_SESSION['error']=$this->valid->validateName($this->data);
-        $_SESSION['error']=$this->valid->validateEmailExists($this->data['UserName'],$this->obj);
-        $_SESSION['error']=$this->valid->validateEmail($this->data['UserName'],$this->data['UserPassword']);
+        $_SESSION['error']=$this->validateName($this->data);
+        $_SESSION['error']=$this->validateEmailExists($this->data['UserName'],$this->obj);
+        $_SESSION['error']=$this->validateEmail($this->data['UserName'],$this->data['UserPassword']);
         if(empty($_SESSION['error']))
         {
             $fname=$this->data['firstname'];
@@ -33,7 +32,7 @@ class User extends Database
     function login()
     {
         $count=0;
-        $_SESSION['error']=$this->valid->validateEmail($this->data['UserName'],$this->data['UserPassword']);
+        $_SESSION['error']=$this->validateEmail($this->data['UserName'],$this->data['UserPassword']);
         $username=$this->data['UserName'];
         $password=$this->data['UserPassword'];
         if(empty($_SESSION['error']))

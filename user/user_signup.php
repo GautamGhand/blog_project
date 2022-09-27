@@ -1,5 +1,5 @@
 <?php
-include('controller..php');
+include('controller.php');
 if (isset($_POST['signup']))
 {
     $obj = new User($_POST);

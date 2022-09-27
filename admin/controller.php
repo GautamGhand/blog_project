@@ -3,21 +3,20 @@ include('../database/database.php');
 include('../validation/validation.php');
 include('../commontraits/controller_common.php');
 session_start();
-class Admin extends Database
+class Admin extends Validation
 {   
     use common;
     public $data;
     public $obj;
-    public $valid;
     function __construct($data=null)
     {
         $this->data=$data;
-        $this->obj=$this->connect();
-        $this->valid=new Validation();
+        $db=new Database();
+        $this->obj=$db->connect();
     }
     function login()
     {
-        $_SESSION['error']=$this->valid->validateEmail($this->data['admin_email'],$this->data['admin_password']);
+        $_SESSION['error']=$this->validateEmail($this->data['admin_email'],$this->data['admin_password']);
         $admin_username=$this->data['admin_email'];
         $admin_password=$this->data['admin_password'];
         if(empty($_SESSION['error']))
@@ -38,7 +37,7 @@ class Admin extends Database
     }   
     function create()
     {
-        $_SESSION['error']=$this->valid->validateEmail($this->data['admin_email'],$this->data['admin_password']);
+        $_SESSION['error']=$this->validateEmail($this->data['admin_email'],$this->data['admin_password']);
         if(empty($_SESSION['error']))
         {
             $email=$this->data['admin_email'];
