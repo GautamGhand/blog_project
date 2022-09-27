@@ -27,5 +27,9 @@ if($d)
     echo "</tr>";
     echo "</table>";
 }
+else
+{
+    echo "<h1 class=\"heading\">NO RECORD FOUND</h1>";
+}
 echo "<a href=\"../user_logout.php\" class=\"active\">LOGOUT</a>"; 
 ?>

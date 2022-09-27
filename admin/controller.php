@@ -50,8 +50,7 @@ class Admin extends Validation
         }
     }
     function view()
-    {
-       
+    {     
         $data=$this->obj->query("Select *from admin where role=2");
         $d=$data->fetchAll();
         return $d;
