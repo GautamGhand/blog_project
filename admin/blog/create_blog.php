@@ -8,7 +8,7 @@ if(!isset($_SESSION['login']['status']))
 }
 if(isset($_POST['submit']))
 {
-    $obj=new Blog($_POST);
+    $obj=new Blog($_POST,$_FILES);
     $obj->create();
 }
 ?>
@@ -39,13 +39,11 @@ if(isset($_POST['submit']))
                     if(!empty($_SESSION['error']['description']))
                     {
                         echo $_SESSION['error']['description'];
-                        unset($_SESSION['error']);
                     }
                     ?>
                 </div>
                 <label class="txt">BLOG IMAGE</label>
                 <input type="file" name="file">
-                <input type="submit" valiue="Create Blog" name="submit" class="btn">
                 <div class="error">
                     <?php
                     if(!empty($_SESSION['error']['file']))
@@ -55,6 +53,7 @@ if(isset($_POST['submit']))
                     }
                     ?>
                 </div>
+                <input type="submit" valiue="Create Blog" name="submit" class="btn">
                 </form>
             </section>
         </section>

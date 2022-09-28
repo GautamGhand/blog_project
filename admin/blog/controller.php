@@ -7,15 +7,17 @@ class Blog extends Validation
     use common;
     public $data;
     public $obj;
-    function __construct($data=null)
+    public $file;
+    function __construct($data=null,$file=null)
     {
         $this->data=$data;
         $db=new Database();
         $this->obj=$db->connect();
+        $this->file=$file;
     }
     function create()
     {
-        $_SESSION['error']=$this->validateBlog($this->data);
+        $_SESSION['error']=$this->validateBlog($this->data,$this->file);
         if(empty($_SESSION['error']))
         {
             $title=$this->data['title'];

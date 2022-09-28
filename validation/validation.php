@@ -72,7 +72,7 @@ class Validation
             }
             return $this->error;
         }
-        function validateBlog($pst)
+        function validateBlog($pst,$file)
         {
             foreach($pst as $k=>$v)
             {
@@ -83,7 +83,11 @@ class Validation
                         $this->error[$k]="Please Enter $k";
                     }
                 }
-            }          
+            }     
+            if($file['file']['size']==0)
+            {
+                $this->error['file']="Please Upload File";
+            }
             return $this->error;
         }
 }
