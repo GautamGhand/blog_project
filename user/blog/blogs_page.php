@@ -6,6 +6,7 @@ if(!isset($_SESSION['login']['userstatus']))
 }
 $obj=new Blog();
 $d=$obj->view();
+echo "<h1 class=\"welcome\">WELCOME ".strtoupper($_SESSION['user_name'])."</h1>";
 echo "<table cellspacing=0>";
 echo "<th>ID</th>";
 echo "<th>TITLE</th>";
@@ -31,5 +32,5 @@ else
 {
     echo "<h1 class=\"no\">NO RECORD FOUND</h1>";
 }
-echo "<a href=\"../user_logout.php\" class=\"back\">LOGOUT</a>"; 
+echo "<a href=\"../user_logout.php\" class=\"logout\">LOGOUT</a>"; 
 ?>

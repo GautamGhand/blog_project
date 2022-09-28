@@ -46,6 +46,15 @@ if(isset($_POST['submit']))
                 <label class="txt">BLOG IMAGE</label>
                 <input type="file" name="file">
                 <input type="submit" valiue="Create Blog" name="submit" class="btn">
+                <div class="error">
+                    <?php
+                    if(!empty($_SESSION['error']['file']))
+                    {
+                        echo $_SESSION['error']['file'];
+                        unset($_SESSION['error']);
+                    }
+                    ?>
+                </div>
                 </form>
             </section>
         </section>

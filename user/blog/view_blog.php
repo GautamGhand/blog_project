@@ -8,6 +8,7 @@ $id=$_SESSION['usr_id'];
 $blog_id=$_GET['blog_id'];
 $obj=new Blog();
 $row=$obj->view_blog($blog_id);
+
 if($row)
 {
         echo "<table cellspacing=0>";
@@ -34,16 +35,16 @@ if($row)
                 {
                     if($b['likes']==0)
                     {
-                        echo "<td>".$likes['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKE</a></td>";
+                        echo "<td>".$dislikes['cnt']."DISLIKES ".$likes['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKES</a></td>";
                     }
                     else
                     {
-                        echo "<td>".$dislikes['cnt']."<a href=\"dislike.php?id=".$blog_id."&user_id=".$id."\">DISLIKE</a></td>";
+                        echo "<td>".$likes['cnt']."LIKES ".$dislikes['cnt']."<a href=\"dislike.php?id=".$blog_id."&user_id=".$id."\">DISLIKES</a></td>";
                     }
                 }
                 else
                 {
-                    echo "<td>".$likes['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKE</a></td>";
+                    echo "<td>".$dislikes['cnt']."DISLIKES ".$likes['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKES</a></td>";
                 }
                 echo '<td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" class="blob"></td>';
             }   

@@ -37,12 +37,16 @@ class Admin extends Validation
     }   
     function create()
     {
+        $_SESSION['error']=$this->validateName($this->data);
         $_SESSION['error']=$this->validateEmail($this->data['admin_email'],$this->data['admin_password']);
+        $_SESSION['error']=$this->validateEmailExists($this->data['admin_email'],$this->obj);
         if(empty($_SESSION['error']))
         {
+            $fname=$this->data['firstname'];
+            $lname=$this->data['lastname'];
             $email=$this->data['admin_email'];
             $password=$this->data['admin_password'];
-            $cnt=$this->obj->exec("insert into admin(email,password,role) values('$email','$password',2)");
+            $cnt=$this->obj->exec("insert into admin(firstname,lastname,email,password,role) values('$fname','$lname','$email','$password',2)");
             if($cnt>=1)
             {
                 echo "<h1 class=\"head\">SUB ADMIN CREATED SUCCESSFULLY</h1>";

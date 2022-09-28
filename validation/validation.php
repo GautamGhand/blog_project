@@ -62,7 +62,13 @@ class Validation
             $d=$data->fetch();
             if($d)
             {
-                $this->error['email']="Email Already Exists";         
+                $this->error['email']="Email Already Exists in User";         
+            }
+            $a=$check->query("select *from admin where email='$email'");
+            $admin=$a->fetch();
+            if($admin)
+            {
+                $this->error['email']="Email taken By Admin Already";
             }
             return $this->error;
         }
@@ -77,7 +83,7 @@ class Validation
                         $this->error[$k]="Please Enter $k";
                     }
                 }
-            }            
+            }          
             return $this->error;
         }
 }

@@ -46,6 +46,7 @@ class User extends Validation
                         $count=0;
                         $_SESSION['usr_id']=$s['id'];
                         $_SESSION['login']['userstatus']=0;
+                        $_SESSION['user_name']=$s['firstname'];
                         header('location:blog/blogs_page.php');
                     $count++;
                 }

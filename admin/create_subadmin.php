@@ -21,6 +21,26 @@ if(isset($_POST['Create_subadmin']))
     <section class="container">
         <section class="frm">
             <form action="create_subadmin.php" method="POST">
+                <label class="txt">FIRST NAME</label>
+                <input type="text" class="inpt" name="firstname">
+                <div class="error">
+                    <?php
+                    if(!empty($_SESSION['error']['firstname']))
+                    {
+                        echo $_SESSION['error']['firstname'];
+                    }
+                    ?>
+                </div>
+                <label class="txt">LAST NAME</label>
+                <input type="text" class="inpt" name="lastname">
+                <div class="error">
+                    <?php
+                    if(!empty($_SESSION['error']['lastname']))
+                    {
+                        echo $_SESSION['error']['lastname'];
+                    }
+                    ?>
+                </div>
                 <label class="txt">EMAIL</label>
                 <input type="text" name="admin_email" class="inpt">
                 <div class="error">

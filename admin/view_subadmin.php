@@ -8,6 +8,8 @@ if(!isset($_SESSION['login']['status']))
 $obj=new Admin();
 $d=$obj->view();
     echo "<table cellspacing=0>";
+    echo "<th>FIRST NAME</th>";
+    echo "<th>LAST NAME</th>";
     echo "<th>EMAIL</th>";
     echo "<th>PASSWORD</th>";
 if($d)
@@ -21,6 +23,8 @@ if($d)
         if($_SESSION['login']['role']==1)
         {
         echo "<tr>";
+        echo "<td>".$row['firstname']."</td>";
+        echo "<td>".$row['lastname']."</td>";
         echo "<td>".$row['email']."</td>";
         echo "<td>".$row['password']."</td>";
         echo "<td><a href=\"delete_subadmin.php?id=".$row['id']."\" class=\"active\">DELETE</a></td>";
