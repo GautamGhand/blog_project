@@ -7,7 +7,8 @@ if(!isset($_SESSION['login']['status']))
     header('location:../admin_login.php');
 }
 $id = $_GET['id'];
-$obj = new PDO('mysql:dbname=blog_project;host=localhost;', 'root', '');
+$db=new Database();
+$obj=$db->connect();
 $data=$obj->query("select *from user where id='$id' ");
 $row=$data->fetch();
 if($row)

@@ -37,5 +37,9 @@ if($d)
         }
     } 
 }
+else
+{
+    echo "<h1 class=\"no\">NO RECORD FOUND</h1>";
+}
 echo "<a href=\"main_page.php\" class=\"back\">BACK</a>";
 ?>

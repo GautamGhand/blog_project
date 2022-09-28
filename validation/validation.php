@@ -39,12 +39,12 @@ class Validation
             {
                 if(!filter_var($email, FILTER_VALIDATE_EMAIL))
                 {
-                    $this->error['email']="please enter valid email";
+                    $this->error['email']="Please enter Valid Email";
                 }
             }
             if(empty($password))
             {
-                $this->error['password']="Password is required";
+                $this->error['password']="Password is Required";
             }
             else
             {   $password=trim($password);

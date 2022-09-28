@@ -29,7 +29,7 @@ if($d)
 }
 else
 {
-    echo "<h1 class=\"heading\">NO RECORD FOUND</h1>";
+    echo "<h1 class=\"no\">NO RECORD FOUND</h1>";
 }
 echo "<a href=\"../user_logout.php\" class=\"back\">LOGOUT</a>"; 
 ?>

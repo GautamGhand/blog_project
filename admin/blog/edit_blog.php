@@ -7,8 +7,9 @@ if(!isset($_SESSION['login']['status']))
     header('location:../admin_login.php');
 }
 $id = $_GET['id'];
-$obj = new PDO('mysql:dbname=blog_project;host=localhost;', 'root', '');
-$data=$obj->query("select *from blog");
+$db=new Database();
+$obj=$db->connect();
+$data=$obj->query("select *from blog where id='$id'");
 $row=$data->fetch();
 if($row)
 {
@@ -16,9 +17,9 @@ if($row)
 }
 else
 {
-    header('location:view_blogs.php');
+    header('location:view_users.php');
 }
-if (isset($_POST['Edit_Blog'])) 
+if(isset($_POST['Edit_Blog'])) 
 {
     $ad = new Blog($_POST);
     $ad->edit('blog',$id,$_POST);
@@ -36,7 +37,7 @@ if (isset($_POST['Edit_Blog']))
         <section class="frm">
             <form action="edit_blog.php?id=<?php echo $_GET['id']; ?>" method="POST">
                 <label class="txt">TITLE</label>
-                <input type="text" name="title" value=<?php echo $val['title'] ?> class="inpt">
+                <input type="text" name="title" value=<?php echo $val['title'];?> class="inpt">
                 <div class="error">
                     <?php
                     if(!empty($_SESSION['error']['title']))
@@ -46,7 +47,7 @@ if (isset($_POST['Edit_Blog']))
                     ?>
                 </div>
                 <label class="txt">DESCRIPTION</label>
-                <textarea name="description" class="desc"><?php echo $val['description'] ?></textarea>
+                <textarea name="description" class="desc"><?php echo $val['description']; ?></textarea>
                 <div class="error">
                     <?php
                     if(!empty($_SESSION['error']['description']))
