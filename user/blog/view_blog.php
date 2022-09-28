@@ -15,6 +15,7 @@ if($row)
         echo "<th>TITLE</th>";
         echo "<th>DESCRIPTION</th>";
         echo "<th>LIKE</th>";
+        echo "<th>IMAGE</th>";
         $db=new Database();
         $db=$db->connect();
         $c=$db->query("select likes from blog_likes where user_id='$id' and blog_id='$blog_id'");
@@ -44,6 +45,7 @@ if($row)
                 {
                     echo "<td>".$likes['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKE</a></td>";
                 }
+                echo '<td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" class="blob"></td>';
             }   
 }
       echo "</tr>";

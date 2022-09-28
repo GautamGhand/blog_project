@@ -1,5 +1,5 @@
 <?php
-include('../blog/controller.php');
+include('controller.php');
 session_start();
 if(!isset($_SESSION['login']['status']))
 {

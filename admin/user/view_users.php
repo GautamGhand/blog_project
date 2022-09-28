@@ -41,5 +41,5 @@ $d=$obj->view();
         }
         echo "</table>";
     }
-echo "<a href=\"../main_page.php\" class=\"active\">BACK</a>"; 
+echo "<a href=\"../main_page.php\" class=\"back\">BACK</a>"; 
 ?>

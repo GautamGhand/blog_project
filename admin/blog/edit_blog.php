@@ -1,8 +1,5 @@
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
 <?php
-
-use JetBrains\PhpStorm\Pure;
-
 session_start();
 include('controller.php');
 if(!isset($_SESSION['login']['status']))
@@ -25,7 +22,6 @@ if (isset($_POST['Edit_Blog']))
 {
     $ad = new Blog($_POST);
     $ad->edit('blog',$id,$_POST);
-    // header('location:view_blogs.php');
 }
 ?>
 <html>
