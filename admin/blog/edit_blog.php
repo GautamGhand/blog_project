@@ -17,7 +17,7 @@ if($row)
 }
 else
 {
-    header('location:view_users.php');
+    header('location:view_blogs.php');
 }
 if(isset($_POST['Edit_Blog'])) 
 {
