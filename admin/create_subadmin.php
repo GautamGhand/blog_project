@@ -50,5 +50,5 @@ if(isset($_POST['Create_subadmin']))
 
 </html>
 <?php
-echo "<a href=\"main_page.php\" class=\"active\">BACK</a>";  
+echo "<a href=\"main_page.php\" class=\"back\">BACK</a>";  
 ?>

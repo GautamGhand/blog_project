@@ -20,7 +20,8 @@ class Blog extends Validation
         {
             $title=$this->data['title'];
             $description=$this->data['description'];
-            $cnt=$this->obj->exec("insert into blog(title,description) values('$title','$description')");
+            $image=addslashes(file_get_contents($_FILES['file']['tmp_name']));
+            $cnt=$this->obj->exec("insert into blog(title,description,image) values('$title','$description','$image')");
             if($cnt>=1)
             {
                 header('location:view_blogs.php');

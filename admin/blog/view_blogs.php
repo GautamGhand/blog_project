@@ -17,6 +17,7 @@ echo "<table cellspacing=0>";
         echo "<th>DELETE</th>";
         echo "<th>ACTIVATE</th>";
         echo "<th>STATUS</th>";
+        echo "<th>IMAGE</th>";
         if($r)
         {
             foreach($r as $row)
@@ -37,9 +38,10 @@ echo "<table cellspacing=0>";
                     echo "<td><a href=\"inactive_blog.php?id=".$row['id']."\" class=\"inactive\">INACTIVATE</a></td>";  
                 }
                 echo "<td>".$row['status']."</td>";
+                echo '<td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" class="blob"></td>';
             }
                 echo "</tr>";
                 echo "</table>";  
         }
-        echo "<a href=\"../main_page.php\" class=\"active\">BACK</a>";  
+        echo "<a href=\"../main_page.php\" class=\"back\">BACK</a>";  
 ?>

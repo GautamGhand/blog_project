@@ -1,12 +1,14 @@
 <?php 
 session_start();
+include('controller.php');
 if(!isset($_SESSION['login']['userstatus']))
 {
     header('location:../user_login.php');
 }
 $id=$_GET['id'];
 $user_id=$_GET['user_id'];
-$db=new PDO('mysql:dbname=blog_project;host=localhost;','root','');
+$db=new Database();
+$db=$db->connect();
 $data=$db->query("select * from blog_likes where blog_id='$id' and user_id='$user_id' ");
 $d=$data->fetchAll();
 if(!$d)

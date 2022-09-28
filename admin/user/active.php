@@ -1,11 +1,13 @@
 <?php
 session_start();
+include('controller.php');
 if(!isset($_SESSION['login']['status']))
 {
     header('location:../admin_login.php');
 }
 $id=$_GET['id'];
-$db=new PDO('mysql:dbname=blog_project;host=localhost;','root','');
+$db=new Database();
+$db=$db->connect();
 $data=$db->query("select *from user where id='$id' ");
 $d=$data->fetch();
 if($d)

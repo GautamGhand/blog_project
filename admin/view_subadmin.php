@@ -37,5 +37,5 @@ if($d)
         }
     } 
 }
-echo "<a href=\"main_page.php\" class=\"active\">BACK</a>";
+echo "<a href=\"main_page.php\" class=\"back\">BACK</a>";
 ?>

@@ -13,6 +13,18 @@ class Validation
                     {
                         $this->error[$k]="Please Enter $k";
                     }
+                    if(is_numeric($pst[$k]) || preg_match('/[^a-z_+-0-9]/i',$pst[$k]))
+                    {       
+                        $this->error[$k]="Please Enter Correct $k";
+                    }
+                    for($i=0;$i<strlen($pst[$k]);$i++)
+                    {
+                        if($pst[$k][$i]==" ")
+                        {
+                            $this->error[$k]="Please Don't Enter space in $k";
+                            break;
+                        }
+                    }
                 }
             }
             return $this->error;

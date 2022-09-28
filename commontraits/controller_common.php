@@ -2,6 +2,7 @@
 trait common
 {
     public $obj;
+    public $valid;
     function __construct()
     {
         $db=new Database();
@@ -9,21 +10,31 @@ trait common
     }
     function edit($table_name,$id,$pst)
     {
-        $data=$this->obj->query("select *from $table_name where id='$id' ");
-        $s=$data->fetch();
-            if($s && $table_name=='user')
+        $this->valid=new Validation();
+            if($table_name=='user')
             {
-                $name=$pst['UserName'];
-                $password=$pst['UserPassword'];
-                $this->obj->exec("update $table_name set email='$name',password='$password' where id='$id' ");
-                header('location:../user/view_users.php');              
+                $_SESSION['error']=$this->valid->validateName($pst);
+                $_SESSION['error']=$this->valid->validateEmail($pst['UserName'],$pst['UserPassword']);
+                if(empty($_SESSION['error']))
+                {
+                    $fname=$pst['firstname'];
+                    $lname=$pst['lastname'];
+                    $name=$pst['UserName'];
+                    $password=$pst['UserPassword'];
+                    $this->obj->exec("update $table_name set email='$name',password='$password',firstname='$fname',lastname='$lname' where id='$id' ");
+                    header('location:../user/view_users.php');  
+                }            
             }
             else
             {
-                $title=$pst['title'];
-                $description=$pst['description'];
-                $this->obj->exec("update $table_name set title='$title',description='$description' where id='$id' ");
-                header('location:../admin/blog/view_blogs.php');  
+                $_SESSION['error']=$this->valid->validateBlog($pst);
+                if(empty($_SESSION['error']))
+                {
+                    $title=$pst['title'];
+                    $description=$pst['description'];
+                    $this->obj->exec("update $table_name set title='$title',description='$description' where id='$id' ");
+                    header('location:../blog/view_blogs.php');  
+                }
             }
     }
     function delete($table_name,$id)

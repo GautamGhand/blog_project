@@ -21,7 +21,7 @@ if(isset($_POST['submit']))
     <body>
         <section class="container">
             <section class="frm">
-                <form action="create_blog.php" method="POST">
+                <form action="create_blog.php" method="POST" enctype="multipart/form-data">
                 <label class="txt">TITLE</label>
                 <input type="text" class="inpt" name="title">
                 <div class="error">
@@ -43,6 +43,8 @@ if(isset($_POST['submit']))
                     }
                     ?>
                 </div>
+                <label class="txt">BLOG IMAGE</label>
+                <input type="file" name="file">
                 <input type="submit" valiue="Create Blog" name="submit" class="btn">
                 </form>
             </section>

@@ -19,6 +19,10 @@ if($row)
         $db=$db->connect();
         $c=$db->query("select likes from blog_likes where user_id='$id' and blog_id='$blog_id'");
         $b=$c->fetch();
+        $l=$db->query("select count(likes) as cnt from blog_likes where blog_id='$blog_id' and likes=1 ");
+        $likes=$l->fetch();
+        $di=$db->query("select count(dislikes) as cnt from blog_likes where blog_id='$blog_id' and dislikes=1");
+        $dislikes=$di->fetch();
             if($row['status']==1)
             {
                 echo "<tr>";
@@ -29,20 +33,20 @@ if($row)
                 {
                     if($b['likes']==0)
                     {
-                        echo "<td><a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKE</a></td>";
+                        echo "<td>".$likes['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKE</a></td>";
                     }
                     else
                     {
-                        echo "<td><a href=\"dislike.php?id=".$blog_id."&user_id=".$id."\">DISLIKE</a></td>";
+                        echo "<td>".$dislikes['cnt']."<a href=\"dislike.php?id=".$blog_id."&user_id=".$id."\">DISLIKE</a></td>";
                     }
                 }
                 else
                 {
-                    echo "<td><a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKE</a></td>";
+                    echo "<td>".$likes['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\">LIKE</a></td>";
                 }
             }   
 }
       echo "</tr>";
       echo "</table>";
-      echo "<a href=\"blogs_page.php\" class=\"active\">BACK</a>"; 
+      echo "<a href=\"blogs_page.php\" class=\"back\">BACK</a>"; 
 ?>

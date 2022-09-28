@@ -1,6 +1,8 @@
 <?php
+include('controller.php');
 $id=$_GET['id'];
-$db=new PDO('mysql:dbname=blog_project;host=localhost;','root','');
+$db=new Database();
+$db=$db->connect();
 $data=$db->query("select *from user where id='$id' ");
 $d=$data->fetch();
 if($d)
