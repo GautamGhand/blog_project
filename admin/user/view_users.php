@@ -26,8 +26,8 @@ $d=$obj->view();
             echo "<td>".$row['firstname']."</td>";
             echo "<td>".$row['lastname']."</td>";
             echo "<td>".$row['email']."</td>";     
-            echo "<td><a href=\"edit.php?id=".$row['id']."\">EDIT</a></td>";
-            echo "<td><a href=\"delete.php?id=".$row['id']."\">DELETE</a></td>"; 
+            echo "<td><a href=\"edit.php?id=".$row['id']."\" class=\"edit\">EDIT</a></td>";
+            echo "<td><a href=\"delete.php?id=".$row['id']."\" class=\"delete\">DELETE</a></td>"; 
             if($row['status']==0)
             {
             echo "<td><a href=\"active.php?id=".$row['id']."\" class=\"active\">ACTIVATE</a></td>";

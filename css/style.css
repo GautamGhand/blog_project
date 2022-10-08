@@ -149,6 +149,7 @@ border:2px solid black;
     background:green;
     border-radius:20px;
     color:black;
+    text-decoration: none;
 }
 .d{
     margin-top:30px;
@@ -208,4 +209,48 @@ border:2px solid black;
     text-decoration: none;
     font-weight: bold;
     color: white;
+}
+.edit
+{
+    border:2px solid black;
+    color:black;
+    padding: 10px 20px;
+    border-radius:20px;
+    background:bisque;   
+    font-size:20px;
+    text-decoration: none;
+    font-weight: bold;   
+}
+.delete
+{
+    border:2px solid black;
+    color:black;
+    padding: 10px 20px;
+    border-radius:20px;
+    background:linear-gradient(to right,green,white,aqua,white,green);   
+    font-size:20px;
+    text-decoration: none;
+    font-weight: bold; 
+}
+.like
+{
+    border:2px solid black;
+    color:black;
+    padding: 10px 20px;
+    border-radius:20px;
+    background:rgb(141, 141, 190);   
+    font-size:20px;
+    text-decoration: none;
+    font-weight: bold; 
+}
+.dislike,.view
+{
+    border:2px solid black;
+    color:black;
+    padding: 10px 20px;
+    border-radius:20px;
+    background:rgb(182, 178, 178);   
+    font-size:20px;
+    text-decoration: none;
+    font-weight: bold; 
 }

@@ -27,8 +27,8 @@ echo "<table cellspacing=0>";
                 echo "<td>".$row['title']."</td>";
                 echo "<td>".$row['description']."</td>" ; 
                 echo "<td>".$row['date']."</td>";   
-                echo "<td><a href=\"edit_blog.php?id=".$row['id']."\">EDIT</a></td>";
-                echo "<td><a href=\"delete_blog.php?id=".$row['id']."\">DELETE</a></td>"; 
+                echo "<td><a href=\"edit_blog.php?id=".$row['id']."\" class=\"edit\">EDIT</a></td>";
+                echo "<td><a href=\"delete_blog.php?id=".$row['id']."\" class=\"delete\">DELETE</a></td>"; 
                 if($row['status']==0)
                 {
                     echo "<td><a href=\"active_blog.php?id=".$row['id']."\" class=\"active\">ACTIVATE</a></td>";

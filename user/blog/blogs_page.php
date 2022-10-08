@@ -22,7 +22,7 @@ if($d)
         echo "<td>".$row['id']."</td>";
         echo "<td>".$row['title']."</td>";
         echo "<td>".$row['description']."</td>" ;
-        echo "<td><a href=\"view_blog.php?blog_id=".$row['id']."\">VIEW</a></td>";
+        echo "<td><a href=\"view_blog.php?blog_id=".$row['id']."\" class=\"view\">VIEW</a></td>";
         }
     }
     echo "</tr>";

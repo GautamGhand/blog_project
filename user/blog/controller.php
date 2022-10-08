@@ -19,7 +19,7 @@ class Blog extends Validation
     }
     function view_blog($id)
     {
-        $v=$this->obj->query("select *from blog where id='$id'");
+        $v=$this->obj->query("select *from blog where id='$id' ");
         $x=$v->fetch();
         if(!$x)
         {
