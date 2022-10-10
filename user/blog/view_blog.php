@@ -26,7 +26,7 @@ if($row)
                 echo "<td>".$row['id']."</td>";
                 echo "<td>".$row['title']."</td>";
                 echo "<td>".$row['description']."</td>" ;
-                    if($b['likes']==0)
+                    if($b['cnt']==1)
                     {
                         echo "<td>".$b['dcnt']."DISLIKES ".$b['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\" class=\"like\">LIKES</a></td>";
                     }
