@@ -13,7 +13,7 @@ $data=$db->query("select * from blog_likes where blog_id='$id' and user_id='$use
 $d=$data->fetchAll();
 if(!$d)
 {
-    $db->exec("insert into blog_likes(blog_id,dislikes,user_id) values('$id',s1,'$user_id')");
+    $db->exec("insert into blog_likes(blog_id,dislikes,user_id) values('$id',1,'$user_id')");
     $_SESSION['blog_id']=$id;
     header('location:view_blog.php?blog_id='.$id);
 }

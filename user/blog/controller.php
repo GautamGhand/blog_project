@@ -25,8 +25,7 @@ class Blog extends Validation
         {
             header('location:blogs_page.php');
         }
-        return $x;
-        
+        return $x;   
     }
 }
 ?>
