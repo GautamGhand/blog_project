@@ -18,22 +18,30 @@ if($row)
         echo "<th>IMAGE</th>";
         $db=new Database();
         $db=$db->connect();
-        $c=$db->query("select *,count(likes) as cnt,(select count(dislikes)from blog_likes where dislikes=1) as dcnt from blog as b inner join blog_likes as bl on(b.id=bl.blog_id) where id='$blog_id' and likes=1");
+        $c=$db->query("select *,(select count(likes) from blog_likes where likes=1) as cnt,(select count(dislikes)from blog_likes where dislikes=1) as dcnt,(select likes from blog_likes where likes=1 and blog_id='$blog_id' and user_id='$id') as likeu from blog as b inner join blog_likes as bl on(b.id=bl.blog_id) where b.id='$blog_id'");
         $b=$c->fetch();
-            if($row['status']==1)
+        if($row['status']==1)
             {
                 echo "<tr>";
                 echo "<td>".$row['id']."</td>";
                 echo "<td>".$row['title']."</td>";
                 echo "<td>".$row['description']."</td>" ;
-                    if($b['cnt']==1)
+                if(isset($b['likeu']))
+                {
+                    if($b['likeu']==1)
                     {
-                        echo "<td>".$b['dcnt']."DISLIKES ".$b['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\" class=\"like\">LIKES</a></td>";
+                        echo "<td>".$b['cnt']."LIKES ".$b['dcnt']."<a href=\"dislike.php?id=".$blog_id."&user_id=".$id."\" class=\"dislike\">DISLIKES</a></td>";
+
                     }
                     else
                     {
-                        echo "<td>".$b['cnt']."LIKES ".$b['dcnt']."<a href=\"dislike.php?id=".$blog_id."&user_id=".$id."\" class=\"dislike\">DISLIKES</a></td>";
+                        echo "<td>".$b['dcnt']."DISLIKES ".$b['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\" class=\"like\">LIKES</a></td>";
                     }
+                }
+                else
+                {
+                    echo "<td>".$b['dcnt']."DISLIKES ".$b['cnt']."<a href=\"like.php?id=".$blog_id."&user_id=".$id."\" class=\"like\">LIKES</a></td>";   
+                }
                 echo '<td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" class="blob"></td>';
             }   
 }
